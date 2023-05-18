@@ -3,13 +3,42 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
+import { grey } from '@mui/material/colors';
+
+let theme = createTheme({
+  palette: {
+        primary: grey,
+          divider: grey[700],
+          background: {
+            default: grey[900],
+            paper: grey[900],
+          },
+          text: {
+            primary: '#fff',
+            secondary: grey[500],
+          },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
