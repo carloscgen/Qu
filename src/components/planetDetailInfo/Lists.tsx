@@ -95,6 +95,10 @@ export const NestedList = ({ id }: IInfo) => {
                         overflow: 'auto',
                         pl: 4
                     }}>
+                        {char.length === 0 && (
+                            <Typography gutterBottom>
+                                No residents on this planet
+                            </Typography>)}
                         {planets[id]?.residents ? planets[id]?.residents.slice(0, 10).map((resident, index) => {
                             return (
                                 <Box

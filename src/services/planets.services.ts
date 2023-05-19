@@ -15,7 +15,6 @@ export interface IPlanet {
     created: string,
     edited: string,
     url: string
-
 }
 
 export interface IPlanetsResponse {
