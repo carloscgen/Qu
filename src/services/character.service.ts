@@ -8,7 +8,7 @@ export interface IChar {
 }
 
 export const GetCharacter = async (residents: string[]) => {
-    let chars: any = [];
+    let chars: IChar[] = [];
     if(residents){
         for (let index = 0; index < residents.length; index++) {
             try {
@@ -16,11 +16,9 @@ export const GetCharacter = async (residents: string[]) => {
                 chars.push(data);   
             } catch (error) {
                 const res = error as IErrorResponse;
-                console.log(error);
-                return res;
+                console.log(res);
             }
         }
-        
     }
     return chars;
 }

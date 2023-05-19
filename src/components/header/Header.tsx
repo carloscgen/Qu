@@ -8,9 +8,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SwBoba from '../../assets/sw_boba.svg';
 import { useNavigate } from "react-router-dom";
 import { Avatar, Button, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
+import AvatarImg from '../../assets/card4.jpg';
 
 const pages = ['Planets'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['SWAPI', 'Visual Guide', 'Wiki Fan', 'Logout'];
 
 export const Header = () => {
     let navigate = useNavigate();
@@ -36,12 +37,28 @@ export const Header = () => {
         setAnchorElUser(null);
     };
 
+    const handleClickUserMenu = (setting: string) => {
+        if (setting && setting === 'SWAPI') {
+            window.location.replace('https://swapi.dev/');
+        }
+        if (setting && setting === 'Visual Guide') {
+            window.location.replace('https://starwars-visualguide.com/#/');
+        }
+        if (setting && setting === 'Wiki Fan') {
+            window.location.replace('https://starwars.fandom.com/es/wiki/Portada');
+        }
+    }
+
+    const handleClickNavigate = () => {
+        navigate("/");
+    }
+
     return (
-        <AppBar 
-        sx={{
-            backdropFilter: 'blur(10px)',
-            backgroundColor: 'rgba(158, 158, 158, 0.7)',
-          }}
+        <AppBar
+            sx={{
+                backdropFilter: 'blur(10px)',
+                backgroundColor: 'rgba(158, 158, 158, 0.7)',
+            }}
             position="fixed"
         >
             <Container maxWidth="xl">
@@ -74,7 +91,7 @@ export const Header = () => {
                     >
                         SW STORE
                     </Typography>
-                    
+
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -145,7 +162,7 @@ export const Header = () => {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={() => navigate(`''`)}
+                                onClick={handleClickNavigate}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}
@@ -156,7 +173,7 @@ export const Header = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="Remy Sharp" src={AvatarImg} />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -176,7 +193,7 @@ export const Header = () => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                <MenuItem key={setting} onClick={() => handleClickUserMenu(setting)}>
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}

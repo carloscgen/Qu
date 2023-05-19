@@ -47,7 +47,7 @@ export const PlanetDetails = () => {
   return (
     <Main>
       <Box sx={{
-        mt: { xs: 6, sm: 6, md: 10, lg: 10, xl: 10 },
+        mt: { xs: 8, sm: 8, md: 10, lg: 10, xl: 10 },
         mb: { xs: 6, sm: 6, md: 10, lg: 10, xl: 10 },
         borderRadius: '10px',
         maxWidth: { xs: 300, sm: 500, md: '100%', lg: '100%', xl: '100%' },
@@ -69,7 +69,7 @@ export const PlanetDetails = () => {
               textAlign: 'center',
               mt: 2,
               mb: 2,
-              fontSize: { xs: '16px', sm: '18px', md: '22px', lg: '24px', xl: '24px' }
+              fontSize: { xs: '20px', sm: '20px', md: '22px', lg: '24px', xl: '24px' }
             }}
             paragraph
           >

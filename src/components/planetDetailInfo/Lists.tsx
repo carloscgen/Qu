@@ -22,7 +22,7 @@ interface IInfo {
 export const NestedList = ({ id }: IInfo) => {
     const [openResidents, setOpenResidents] = React.useState<boolean>(false);
     const [planets, setPlanets] = React.useState<IPlanet[]>([])
-    const [char, setChar] = React.useState<IChar[]>([{name: '', height: '', mass: ''}])
+    const [char, setChar] = React.useState<IChar[]>([{ name: '', height: '', mass: '' }])
 
     const getPlatesFromStorage = React.useCallback(() => {
         const planetStorage = JSON.parse(localStorage.getItem('planets') || '{}')
@@ -51,7 +51,7 @@ export const NestedList = ({ id }: IInfo) => {
     const fetchCharacter = React.useCallback(
         async (arr: string[]) => {
             try {
-                const ch: any = await GetCharacter(arr);
+                const ch: IChar[] = await GetCharacter(arr);
                 setChar(ch);
             } catch (error) {
                 const res = error as IErrorResponse;
@@ -63,7 +63,7 @@ export const NestedList = ({ id }: IInfo) => {
     useEffect(() => {
         fetchCharacter(planets[id]?.residents)
     }, [fetchCharacter, id, planets]);
-    
+
     return (
         <List
             sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
@@ -77,7 +77,7 @@ export const NestedList = ({ id }: IInfo) => {
         >
             <ListItemButton onClick={handleClickResidents}>
                 <ListItemIcon>
-                    <EmojiPeopleIcon 
+                    <EmojiPeopleIcon
                         sx={{
                             backgroundColor: '#fff',
                             borderRadius: '50%'
