@@ -22,7 +22,8 @@
     "react-scripts": "5.0.1",
     "sass": "^1.62.1",
     "styled-components": "^5.3.10",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.82.0"
   },
   "scripts": {
     "start": "react-scripts start",
