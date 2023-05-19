@@ -6,6 +6,7 @@ import { PlanetCard } from './PlanetCard';
 import bgMain from '../../assets/bg_main.jpg';
 import { GetPlanetsImages } from '../../services/planetImage.services';
 import { styled } from '@mui/material/styles';
+import { IErrorResponse } from '../../interfaces/error';
 
 export const Planets = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -20,7 +21,9 @@ export const Planets = () => {
         const planets = planetsData?.results;
         setPlanets(planets);
       } catch (error) {
+        const res = error as IErrorResponse;
         console.log(error);
+        return res;
       }
     }
     , [])
@@ -35,10 +38,12 @@ export const Planets = () => {
   const fetchImages = useCallback(
     async () => {
       try {
-        const images = await GetPlanetsImages();
+        const images: string[] = await GetPlanetsImages();
         setPlanetImages(images);
       } catch (error) {
+        const res = error as IErrorResponse;
         console.log(error);
+        return res;
       }
     }
     , [])

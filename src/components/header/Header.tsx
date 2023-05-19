@@ -9,7 +9,7 @@ import SwBoba from '../../assets/sw_boba.svg';
 import { useNavigate } from "react-router-dom";
 import { Avatar, Button, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 
-const pages = ['Planets', 'Films'];
+const pages = ['Planets'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const Header = () => {
@@ -47,6 +47,7 @@ export const Header = () => {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box
+                        onClick={handleClick}
                         sx={{
                             mr: 2,
                             cursor: 'pointer',
@@ -105,13 +106,14 @@ export const Header = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={() => navigate(`''`)}>
+                                <MenuItem key={page} onClick={handleClick}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
                     <Box
+                        onClick={handleClick}
                         sx={{
                             mr: 2,
                             cursor: 'pointer',
@@ -121,6 +123,7 @@ export const Header = () => {
                         <Avatar alt="Star Wars Boba" src={SwBoba} />
                     </Box>
                     <Typography
+                        onClick={handleClick}
                         variant="h5"
                         noWrap
                         component="a"

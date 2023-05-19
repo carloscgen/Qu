@@ -28,7 +28,6 @@ export interface IPlanetsResponse {
 export const GetPlanets = async (): Promise<IPlanetsResponse> => {
     try {
         const { data } = await axios.get<IPlanetsResponse>('https://swapi.dev/api/planets');
-        console.log('data', data)
         return data;
     } catch (error) {
         const res = error as any

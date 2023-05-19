@@ -8,18 +8,40 @@ import planet7 from '../assets/planet7.jpg';
 import planet8 from '../assets/planet8.jpg';
 import planet9 from '../assets/planet9.jpg';
 import planet10 from '../assets/planet10.jpg';
+import axios from 'axios';
+import { IErrorResponse } from '../interfaces/error';
 
-export const GetPlanetsImages = () =>{
-    return [
-        planet1,
-        planet2,
-        planet3,
-        planet4,
-        planet5,
-        planet6,
-        planet7,
-        planet8,
-        planet9,
-        planet10,
-    ]
+const hard = [
+    planet1,
+    planet2,
+    planet3,
+    planet4,
+    planet5,
+    planet6,
+    planet7,
+    planet8,
+    planet9,
+    planet10,
+]
+
+export const GetPlanetsImages = async () => {
+    let imagesMapped: any = [];
+
+        for (let index = 0; index < 10; index++) {
+            try {
+                const { status } = await axios.get(`https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg`)
+                if (status === 200) {
+                    imagesMapped.push(`https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg`)
+                } else {
+                    imagesMapped.push(hard[index])
+                }
+            } catch (error) {
+                const res = error as IErrorResponse;
+                if (res.response.status === 404) {
+                    imagesMapped.push(hard[index])
+                }
+            }
+            
+        }
+        return imagesMapped;
 }

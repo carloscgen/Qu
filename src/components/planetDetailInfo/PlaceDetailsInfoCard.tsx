@@ -1,8 +1,7 @@
-import { Typography, Box, Rating } from '@mui/material'
+import { Typography } from '@mui/material'
 import React, { useCallback, useEffect, useState } from 'react'
 import { capitalizeFirstLetter } from '../../utils/stringUtils'
 import { IPlanet } from '../../services/planets.services'
-import { GetPlanetsImages } from '../../services/planetImage.services'
 import { formatDate } from '../../utils/datesFormat'
 
 interface IInfo {
